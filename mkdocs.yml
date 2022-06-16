@@ -1,0 +1,101 @@
+site_name: Dremio Arrow Flight Client
+repo_url: https://github.com/gsl-icraf/dremio-arrow
+repo_name: gsl-icraf/dremio-arrow
+edit_uri: ""
+
+nav:
+  - Home: index.md
+  - Installation: installation.md
+  - Usage:
+    - Overview: usage.md
+    - Python Example: usage-python.md
+    - R Example: usage-r.md
+  - API Reference: api.md
+  - Contributing: contributing.md
+  - Changelog: changelog.md
+
+theme:
+  name: material
+  language: en
+  highlightjs: true
+  icon:
+    repo: fontawesome/brands/github
+    logo: material/book-open-variant
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.top
+    - navigation.expand
+    - navigation.sections
+    - navigation.indexes
+    - header.autohide
+    - toc.integrate
+    - content.code.annotate
+    - search.suggest
+    - search.highlight
+    - search.share
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      accent: deep purple
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: lime
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
+  font:
+    code: Montserrat Mono
+
+markdown_extensions:
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.critic:
+      mode: view
+  - pymdownx.tilde
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.highlight:
+      anchor_linenums: true
+      linenums: true
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.superfences
+  - pymdownx.snippets
+  - pymdownx.inlinehilite
+  - pymdownx.details
+  - pymdownx.tasklist:
+      custom_checkbox: true
+      clickable_checkbox: true
+  - admonition
+  - attr_list
+  - md_in_html
+
+plugins:
+  - include-markdown
+  - search:
+      lang: en
+  - mkdocstrings:
+      watch:
+        - docs
+  - git-revision-date-localized:
+        type: date
+        fallback_to_build_date: true
+        enable_creation_date: true
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/gsl-icraf/dremio-arrow
+      name: Github
+    - icon: material/email
+      link: "mailto:jaysnmury@gmail.com"
+
+copyright: Copyright &copy; 2020 - 2021 CIFOR-ICRAF SPACIAl Unit

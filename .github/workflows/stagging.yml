@@ -1,0 +1,105 @@
+# This workflow seek to establish that the client was built with best practices in place
+# and it runs flawlessly as designed!
+name: stagging workflow
+
+on:
+  push:
+    branches:
+      - "main"
+    paths-ignore:
+      - 'LICENSE'
+      - 'README.md'
+      - '.gitignore'
+      - '.github/workflows/dev.yml'
+      - '.github/workflows/release.yml'
+      - '.github/ISSUE_TEMPLATE.md'
+
+  workflow_dispatch:
+
+concurrency:
+  group: preview_env
+  cancel-in-progress: true
+
+env:
+  DREMIO_FLIGHT_SERVER_HOST: localhost
+  DREMIO_FLIGHT_SERVER_PORT: 32010
+  DREMIO_FLIGHT_SERVER_UI_PORT: 9047
+  DREMIO_FLIGHT_SERVER_USERNAME: test_username
+  DREMIO_FLIGHT_SERVER_PASSWORD: test_password123
+  PYTHONWARNINGS: ignore
+
+jobs:
+  client-test:
+    runs-on: ubuntu-latest
+
+    # dremio engine docker container service
+    services:
+      dremio:
+        image: dremio/dremio-oss
+        ports:
+          - 32010:32010
+          - 9047:9047
+
+    strategy:
+      matrix:
+        python-versions: [ "3.10" ]
+        poetry-version: [1.1.12]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-versions }}
+
+      - name: Install poetry ${{ matrix.poetry-version }}
+        run: |
+          python -m ensurepip
+          python -m pip install --upgrade pip
+          python -m pip install poetry==${{ matrix.poetry-version }}
+
+      - name: Install dependencies
+        run: |
+          poetry install --extras "test dev doc"
+
+      - name: code and doc files formatting check
+        run: make format
+
+      - name: code linting
+        run: make lint
+
+      - name: pre-commit check
+        run: make pre-commit
+
+      - name: Bootstrap dremio test account and datasets
+        run: bash wait-for ${DREMIO_FLIGHT_SERVER_HOST}:${DREMIO_FLIGHT_SERVER_UI_PORT} -t 3600 -- echo 'Dremio server service is up and running!' && poetry run python scripts/bootstrap.py
+
+      - name: generate tests and coverage info
+        run: make test
+
+      - name: Build and install wheel
+        run: |
+          poetry build -f wheel
+          poetry run pip install dist/*.whl
+
+      - name: Check we can import and use client
+        run: poetry run python -c "from dremioarrow import DremioArrowClient, __version__; flight_=DremioArrowClient(); print(__version__)"
+
+      - name: build documentation
+        run: poetry run mkdocs build
+
+      - name: update documentation branch
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site
+          publish_branch: gh-pages
+          commit_message: ${{ github.event.head_commit.message }}
+          allow_empty_commit: true
+
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          user: __token__
+          password: ${{ secrets.PYPI_API_TOKEN }}
+          skip_existing: true

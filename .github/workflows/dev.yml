@@ -1,0 +1,78 @@
+name: development workflow
+
+# Controls when the action will run.
+on:
+  # Triggers the workflow on push or pull request events on all branches
+  # push:
+  #   paths-ignore:
+  #     - 'LICENSE'
+  #     - 'README.md'
+  #     - '.gitignore'
+  #     - '.github/workflows/stagging.yml'
+  #     - '.github/workflows/release.yml'
+  #     - '.github/ISSUE_TEMPLATE.md'
+  pull_request:
+    paths-ignore:
+      - 'LICENSE'
+      - 'README.md'
+      - '.gitignore'
+      - '.github/workflows/stagging.yml'
+      - '.github/workflows/release.yml'
+      - '.github/ISSUE_TEMPLATE.md'
+  # Allows one to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# ensure only a single workflow is run at a time, cancels previous workflows
+concurrency:
+  group: dev_env
+  cancel-in-progress: true
+
+# define fake dremio account username and password
+env:
+  DREMIO_FLIGHT_SERVER_USERNAME: fake_username
+  DREMIO_FLIGHT_SERVER_PASSWORD: fake_password
+  PYTHONWARNINGS: ignore
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  client-build:
+    # The type of runner that the job will run on
+    strategy:
+      matrix:
+        python-versions: [3.7, 3.8, 3.9, "3.10"]
+        poetry-version: [1.1.12]
+        os: [ubuntu-20.04,  macos-11, windows-2019]
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-versions }}
+
+      - name: Install poetry ${{ matrix.poetry-version }}
+        run: |
+          python -m ensurepip
+          python -m pip install --upgrade pip
+          python -m pip install poetry==${{ matrix.poetry-version }}
+
+      - name: Install dependencies
+        run: poetry install --extras 'test doc'
+
+      - name: code and doc files formatting check
+        run: make format
+
+      - name: code linting
+        run: make lint
+
+      - name: Build installable wheel
+        run: |
+          poetry build -f wheel
+
+      - name: Check we can import and use client
+        run: poetry run python -c "from dremioarrow import DremioArrowClient, __version__; flight_=DremioArrowClient(); print(__version__)"
+
+      - name: confirm docs build
+        run: |
+          poetry run mkdocs build

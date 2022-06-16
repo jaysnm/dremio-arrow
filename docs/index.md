@@ -35,4 +35,4 @@ The Arrow Flight libraries provide a development framework for implementing a se
 
 ## Installation
 
-Please see installation notes [here](https://jaysnm.github.io/dremio-arrow/installation/)
+Please installation notes [here](https://jaysnm.github.io/dremio-arrow/installation/)
