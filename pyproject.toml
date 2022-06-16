@@ -1,7 +1,7 @@
 [tool]
 [tool.poetry]
 name = "dremio-arrow"
-version = "1.0.0-rc"
+version = "1.0.1"
 homepage = "https://github.com/jaysnm/dremio-arrow"
 description = "Dremio SQL Lakehouse Arrow Flight Client."
 authors = ["Jason Kinyua <jaysnmury@gmail.com>"]

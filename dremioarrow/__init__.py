@@ -2,6 +2,6 @@
 
 __author__ = """Jason Kinyua"""
 __email__ = 'jaysnmury@gmail.com'
-__version__ = '1.0.0-rc'
+__version__ = '1.0.1'
 
 from .client import DremioArrowClient, dremio_query  # type: ignore

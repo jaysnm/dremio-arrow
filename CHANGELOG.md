@@ -5,6 +5,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [1.0.1] - 2022-06-16
+* Initial stable release.
+
 ## [1.0.0-rc4] - 2022-06-16
 * Paying for missing `1.0.0-rc4` changelog entry.
 
