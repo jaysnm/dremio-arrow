@@ -1,6 +1,6 @@
 site_name: Dremio Arrow Flight Client
-repo_url: https://github.com/gsl-icraf/dremio-arrow
-repo_name: gsl-icraf/dremio-arrow
+repo_url: https://github.com/jaysnm/dremio-arrow
+repo_name: jaysnm/dremio-arrow
 edit_uri: ""
 
 nav:
@@ -93,9 +93,9 @@ plugins:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/gsl-icraf/dremio-arrow
+      link: https://github.com/jaysnm/dremio-arrow
       name: Github
     - icon: material/email
       link: "mailto:jaysnmury@gmail.com"
 
-copyright: Copyright &copy; 2020 - 2021 CIFOR-ICRAF SPACIAl Unit
+copyright: Copyright &copy; 2020 - 2022 Jason Kinyua
