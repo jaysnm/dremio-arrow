@@ -50,6 +50,7 @@ ipython = { version = "^8.14.0", optional = true }
 jupyterlab = { version = "^4.0.2", optional = true }
 tornado = "^6.3.2"
 mkdocs-include-markdown-plugin = "^4.0.4"
+mkdocstrings-python = "^1.1.2"
 
 
 [tool.poetry.extras]
