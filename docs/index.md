@@ -6,7 +6,7 @@
 Arrow Flight is a high-speed, distributed protocol designed to handle big data, providing increase in throughput between client applications and Dremio.
 This Dremio Arrow Flight Client is based on [python official examples](https://github.com/dremio-hub/arrow-flight-client-examples/tree/main/python).
 
-> Disclaimer: This project is not affliated to [dremio](dremio.com) in any way. It is a tool that I developed while at CIFOR-ICRAF and now we have decided to open source it for wider community use. While I may not have enough time to actively maintain it, the tool is stable enough to sustain future use cases. Besides, community contribution is warmly welcome in form of PRs and forks.
+> Disclaimer: This project is not affliated to [dremio](https://dremio.com) in any way. It is a tool that I developed while at CIFOR-ICRAF and now we have decided to open source it for wider community use. While I may not have enough time to actively maintain it, the tool is stable enough to sustain future use cases. Besides, community contribution is warmly welcome in form of PRs and forks.
 
 
 * Documentation: <https://jaysnm.github.io/dremio-arrow/>
