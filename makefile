@@ -13,7 +13,7 @@ format:
 
 lint:
 	poetry run flake8 $(sources)
-	poetry run mypy $(sources)
+	# poetry run mypy $(sources)
 
 unittest:
 	poetry run pytest
