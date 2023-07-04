@@ -1,7 +1,7 @@
 # Dremio SQL Lakehouse Arrow Flight Client
 
-
-[![python](https://img.shields.io/badge/python-3.7%20%7C%203.8%20%7C%203.9%20%7C%203.10-blue)](https://pypi.org/project/dremio-arrow/)
+![Python3.10](https://img.shields.io/badge/python-3.10-brightgreen?style=flat&logo=python)
+![Python3.11](https://img.shields.io/badge/python-3.11-blue?style=flat&logo=python)
 
 Arrow Flight is a high-speed, distributed protocol designed to handle big data, providing increase in throughput between client applications and Dremio.
 This Dremio Arrow Flight Client is based on [python official examples](https://github.com/dremio-hub/arrow-flight-client-examples/tree/main/python).

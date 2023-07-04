@@ -5,6 +5,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [1.0.3] - 2023-07-04
+* removed support for python 3.9 and below
+* officially supporting python3.10 and python3.11
+
+## [1.0.2] - 2023-07-04
+* Bumped dependencies
+* Fixed invalid link to dremio.com on documentation
+* Added missing dependencies
+
 ## [1.0.1] - 2022-06-16
 * Initial stable release.
 
