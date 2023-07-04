@@ -1381,6 +1381,17 @@ mkdocs = ">=1.0"
 pytz = "*"
 
 [[package]]
+name = "mkdocs-include-markdown-plugin"
+version = "4.0.4"
+description = "Mkdocs Markdown includer plugin."
+optional = false
+python-versions = "<3.12,>=3.7"
+files = [
+    {file = "mkdocs_include_markdown_plugin-4.0.4-py3-none-any.whl", hash = "sha256:792caa91c2c46fa174ad44caa786656ac3f475f2cef5ad33ad28a106f7bc4086"},
+    {file = "mkdocs_include_markdown_plugin-4.0.4.tar.gz", hash = "sha256:a5d569a653a610cbbe5b9c0ebb257ce7f94b453e93c3ae2c503b682e77465773"},
+]
+
+[[package]]
 name = "mkdocs-material"
 version = "9.1.18"
 description = "Documentation that simply works"
@@ -2878,4 +2889,4 @@ toy = ["ipython", "jupyterlab"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.10,<3.12"
-content-hash = "f2fb47f50e78e2e3bd1a0fb5a3bd6ec5f57c6f39560216d7c6c2f58aca925ea4"
+content-hash = "68c1d1981a5491840a64806509dcaf84789160b20686a76291274e345d14b765"
