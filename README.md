@@ -1,5 +1,6 @@
 # Dremio SQL Lakehouse Arrow Flight Client
 
+![Python3.9](https://img.shields.io/badge/python-3.9-brightgreen?style=flat&logo=python)
 ![Python3.10](https://img.shields.io/badge/python-3.10-brightgreen?style=flat&logo=python)
 ![Python3.11](https://img.shields.io/badge/python-3.11-blue?style=flat&logo=python)
 
