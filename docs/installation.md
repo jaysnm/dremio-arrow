@@ -14,7 +14,7 @@ This Dremio Arrow Flight Client is based on [python Official examples](https://g
 ## Installation Requirements
 
 - A package manger :-> [Pip](https://pip.pypa.io), [Poetry](https://python-poetry.org/docs/master/#installation) or [Conda](https://conda.io/docs/user-guide/install/index.html)
-- [Python](http://docs.python-guide.org/en/latest/starting/installation/) (any of 3.7, 3.8, 3.9 or 3.10)
+- [Python](http://docs.python-guide.org/en/latest/starting/installation/) (any of 3.9 through 3.11)
 - [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) if installing from source
 
 ???+ hint "Experimental Git Branches"
@@ -28,7 +28,7 @@ This Dremio Arrow Flight Client is based on [python Official examples](https://g
 
     This package is thorougly tested against `python3.7`, `python3.8`, `python3.9` or `python3.10`. Other python3 versions might work but just note they have not been tested.
 
-!!! info "Virtual Environment or Install on OS Filesystem?"  
+!!! info "Virtual Environment or Install on OS Filesystem?"
 
     Personally I discourage installation on the python base libraries path. I consider it an `evil act` because it may cause unprecedented issues if the package is compromised (we are always onlook for security vulnerabilities but it is always good to be prepared for unexpected eventualities).
     In my opinion therefore, it is better to install the package (not just this but also all other packages that you use) in a virtual environment.
@@ -38,7 +38,7 @@ This Dremio Arrow Flight Client is based on [python Official examples](https://g
 
 Create a virtual environment and activate it.
 
-- Using [virtualenv](https://virtualenv.pypa.io/en/latest/installation.html)  
+- Using [virtualenv](https://virtualenv.pypa.io/en/latest/installation.html)
 
 ```bash
 virtualenv -p python3 venv
